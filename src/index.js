@@ -18,7 +18,7 @@ connDB.on('error', (error) => {
 })
 
 connDB.once('open', () => {
-    console.log(`MongoDB Connected: ${connDB.host}`.yellow.bold.underline)
+    console.log(`MongoDB Connected: ${connDB.host}`)
 })
 
 console.log(process.env.COFFEE_DATA);
