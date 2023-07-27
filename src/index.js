@@ -17,17 +17,17 @@ console.log(process.env.COFFEE_DATA);
 
 // routes
 app.get('/api',async (req, res, next) =>  { 
-    let productions = await Product.find();
-    const listtype = ['nc','bia','ta','gao'];
-    let data =  listtype.map( type => { 
-        return {
-            "type": type,
-            "data": productions.filter(product => product.type == type)
-        }
-    });
+    // let productions = await Product.find();
+    // const listtype = ['nc','bia','ta','gao'];
+    // let data =  listtype.map( type => { 
+    //     return {
+    //         "type": type,
+    //         "data": productions.filter(product => product.type == type)
+    //     }
+    // });
   res.status(res.statusCode || 200);
     res.json({
-        product : data,
+        product : 'data',
     });
 });
 
