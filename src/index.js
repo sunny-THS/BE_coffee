@@ -7,7 +7,7 @@ const Product = require('../models/product');
 
 require('dotenv').config();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 const app = express();
 
 // connect to mongodb
@@ -17,18 +17,18 @@ console.log(process.env.COFFEE_DATA);
 
 // routes
 app.get('/api', async (req, res, next) =>  { 
-    let productions = await Product.find();
-    // const listtype = ['nc','bia','ta','gao'];
-    // let data =  listtype.map( type => { 
-    //     return {
-    //         "type": type,
-    //         "data": productions.filter(product => product.type == type)
-    //     }
-    // });
-    console.log(productions);
+    let productions = await Product.find().exec();
+    const listtype = ['nc','bia','ta','gao'];
+    let data =  listtype.map( type => { 
+        return {
+            "type": type,
+            "data": productions.filter(product => product.type == type)
+        }
+    });
+    // console.log(productions);
   res.status(res.statusCode || 200);
     res.json({
-        product : 'data',
+        product : data,
     });
 });
 
