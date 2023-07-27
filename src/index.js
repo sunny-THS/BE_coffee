@@ -16,7 +16,7 @@ mongoose.connect(process.env.COFFEE_DATA, () => console.log('Connected to mongod
 console.log(process.env.COFFEE_DATA);
 
 // routes
-app.use('/api',async (req, res, next) =>  { 
+app.get('/api',async (req, res, next) =>  { 
     let productions = await Product.find();
     const listtype = ['nc','bia','ta','gao'];
     let data =  listtype.map( type => { 
